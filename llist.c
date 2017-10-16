@@ -7,6 +7,37 @@ int llDoCheck = 1;		/* set true for paranoid consistency checking */
 
 #define doCheck(_lp) (llDoCheck && llCheck(_lp))
 
+//Make a new node for the BST
+//TODO: newTree should take in a string for a name
+LList *newTree()
+{
+  //Make a temporary node while allocating memory space by grabbing the size of our node
+  printf("Making a new node!\n");
+  LList *tree = (LList *)malloc(sizeof(LList));
+  tree -> left = tree -> right = NULL;
+  tree -> *str = NULL;
+  return tree;
+}
+
+//Insert a new node into the Binary Search Tree
+LList *insert(LList *treeNode, char *name)
+{
+  printf("~~Inserting!~~");
+  int cond; //The condition when comparing strings
+  
+  /*If the tree is empty, return a new node*/
+  if(treeNode == NULL) return newTree(*name); //newTree needs to take in string parameters for a name
+  /* Else go down the tree */
+  if((cond = strcmp(*name, treeNode -> *name)) == 0 )
+    treeNode -> count++; //We have encountered a repeated word! Increase the count
+  else if(cond < 0)
+    treeNode -> left = insert(treeNode -> left, *name);
+  else
+    treeNode -> right = insert(treeNode -> right, *name);
+  /* Return the unchanged node pointer! */
+  return treeNode;
+}
+
 /* create a new list */
 LList *llAlloc()
 {

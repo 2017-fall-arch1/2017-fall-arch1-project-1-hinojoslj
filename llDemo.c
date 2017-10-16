@@ -20,14 +20,19 @@ int gets_n(char *s, int limit)
 
 int main()
 {
-  char buf[100];
+  printf("Welcome to Laura's Arch Lab 1.\n");
+  
+  char buf[100];                /*The Buffer used to read and write to a file*/
   LList *lp = llAlloc();	/* make empty list */
-
+  LList *tree;      /* Makes a new tree! */
+  
   llPrint(lp, "List contents, prior to reading input:");
 
+  tree = NULL;
   while (gets_n(buf, 100))	/* build list */
-    llPut(lp, buf);
-
+    // llPut(lp, buf);
+   tree = insert(tree, buf);
+      
   llPrint(lp, "List contents, after building list:");
 
   llMakeEmpty(lp);

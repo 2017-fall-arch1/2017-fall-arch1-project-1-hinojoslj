@@ -23,24 +23,25 @@ int main()
   printf("Welcome to Laura's Arch Lab 1.\n");
   
   char buf[100];                /*The Buffer used to read and write to a file*/
-  LList *lp = llAlloc();	/* make empty list */
-  LList *tree;      /* Makes a new tree! */
+  tree *binaryTree = llAlloc();	/* Allocates Memory for the tree! */
+  // LList *tree;      /*   OLD-- Makes a new tree!    */
   
-  llPrint(lp, "List contents, prior to reading input:");
+  printf("Allocated Memory for tree succesfully!\n Attemping to insert now:\n");
 
-  tree = NULL;
+  //tree = NULL;
   while (gets_n(buf, 100))	/* build list */
     // llPut(lp, buf);
-   tree = insert(tree, buf);
+     binaryTree = insert(binaryTree, buf);
       
-  llPrint(lp, "List contents, after building list:");
+     processPrint(binaryTree);
+     printf("You have successfully inserted!\n");
 
-  llMakeEmpty(lp);
+    //llMakeEmpty(lp);
 
-  printf("After emptying the list...");
-  llPrint(lp, 0);		/* default message */
+  printf("After emptying the list...\n");
+  //llPrint(lp, 0);		/* default message */
 
-  llFree(lp);
-
+  //llFree(lp);
+  
   return 0;
 }

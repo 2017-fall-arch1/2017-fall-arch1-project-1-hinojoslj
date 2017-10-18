@@ -24,24 +24,21 @@ int main()
   
   char buf[100];                /*The Buffer used to read and write to a file*/
   tree *binaryTree = llAlloc();	/* Allocates Memory for the tree! */
-  // LList *tree;      /*   OLD-- Makes a new tree!    */
   
   printf("Allocated Memory for tree succesfully!\n Attemping to insert now:\n");
 
-  //tree = NULL;
-  while (gets_n(buf, 100))	/* build list */
-    // llPut(lp, buf);
-     binaryTree = insert(binaryTree, buf);
-      
-     processPrint(binaryTree);
-     printf("You have successfully inserted!\n");
-
-    //llMakeEmpty(lp);
-
-  printf("After emptying the list...\n");
-  //llPrint(lp, 0);		/* default message */
-
-  //llFree(lp);
+  while(strcmp(buf, "") != 0 )	/* build list */
+  {
+    printf("Input a name, or press enter to quit: \n");
+    gets_n(buf, 100);
+    if(strcmp(buf, "") == 0 ){
+      break;
+    }
+    insert(binaryTree, buf);
+  }
+  
+    processPrint(binaryTree);
+    printf("You have successfully inserted!\n");
   
   return 0;
 }

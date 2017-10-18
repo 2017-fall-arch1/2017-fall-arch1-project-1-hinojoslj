@@ -13,12 +13,9 @@ typedef struct
   treeNode *treeRoot; //treeRoot will be the base of the tree
 }tree; //Tree will be the whole tree
 
-//extern int llDoCheck;		/* set true for paranoid consistency checking */
-
 /*Allocate memory for the tree first!*/
 tree *llAlloc(); //Modified Linkedlist llAlloc to accept tree structure
 
-//~~~~~~~~~~~~~~~~~TO FIX!~~~~~~~~~~~~~~~~~~~~~~~~~
 
 /* Insert into the BST */
 void *insert(tree *leaf, char *name);
@@ -28,5 +25,6 @@ treeNode *newTreeNode(treeNode *root, treeNode *leaf);
 
 void processPrint(tree *binaryTree);
 void printLeaf(treeNode *leaf, FILE *fp);
+void readFile();
 
 #endif	/* included */

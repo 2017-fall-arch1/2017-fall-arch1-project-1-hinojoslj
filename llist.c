@@ -4,10 +4,6 @@
 #include "llist.h"		
 #include <string.h>
 
-//int llDoCheck = 1;		/* set true for paranoid consistency checking */
-
-//#define doCheck(_lp) (llDoCheck && llCheck(_lp))
-
 // Allocate memory for a tree
 tree *llAlloc()
 {
@@ -51,9 +47,6 @@ void *insert(tree *leaf, char *name)
 
 }
 
-/*
- * ~~~~~~~~~~ATTEMPT TO ADD A NEW NODE TO BST~~~~~~~~~~~~~
- */
 //Makes a new node for the BST, like leaves or children..
 treeNode *newTreeNode(treeNode *root, treeNode *leaf)
 {
@@ -65,10 +58,7 @@ treeNode *newTreeNode(treeNode *root, treeNode *leaf)
       return leaf;
   //Else go down the tree
   
-  //This is might cause problems.. Check logic: Can A BST Tree have something that also keeps counts of repeated words?
   cond = strcmp(leaf -> name, root -> name);
-  //if(cond == 0 )
-    //root -> count++; //We have encountered a repeated word! Increase the count
   if(0 > cond)
     root -> left = newTreeNode(root -> left, leaf);
   else
@@ -77,16 +67,13 @@ treeNode *newTreeNode(treeNode *root, treeNode *leaf)
   //Return the unchanged node pointer!
   return root;
 }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 
 //~~~~~~~~~~~~~~~~PRINT THE TREE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // print list membership.  Prints default mesage if message is NULL
 void processPrint(tree *binaryTree)
 {    
     FILE *fp; 
-    fp = fopen("test.txt", "w");
+    fp = fopen("EmployeeNames.txt", "w");
     printLeaf(binaryTree -> treeRoot, fp);
 }
 
@@ -104,18 +91,18 @@ void printLeaf(treeNode *leaf, FILE *fp)
 
 //~~~~~~~~~~~~~~~~~FILE METHODS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 //TODO: If you are READING from the file then you are calling ~~~readFile at each line.
-//TODO: If you are WRITING to the file then you are ~~~writingFile as you print the names.
 void readFile()
 {
-    //FILE *fp; 
-    //fp = fopen("/Arch/2017-fall-arch1-project-1-hinojoslj/test.txt", w+);
-    
-}
-
-void writeFile()
-{
-    //File *fp; 
-    //fp = fopen("/Arch/2017-fall-arch1-project-1-hinojoslj/test.txt", w+);
-    //fputs(leaf -> name, fp);
-    
+    FILE *fp; 
+    char c; 
+    fp = fopen("EmployeeNames.txt", "r");
+    if(fp)
+    {
+        while(( c = getc(fp)) != EOF )
+        {
+            printf("%c", c);
+            putchar(c);
+        }
+        fclose(fp);
+    }
 }

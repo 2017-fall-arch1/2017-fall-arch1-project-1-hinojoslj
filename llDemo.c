@@ -3,6 +3,13 @@
 #include <string.h> 		/* for strlen */
 #include "llist.h"		/* for list operations */
 
+//~~~~~~~~~~~~~~~~~~~About the code~~~~~~~~~~~~~~~~~~~
+//The basic structure of this code was made possible 
+//with the code from github. In addition, this code was
+//also made possible with the work of Miguel Nunez,
+//and Brian Riveron, with refrence to The C Programming
+//Language book. 
+
 
 /* read no more than limit chars into s, return #chars read.  Doesn't include trailing \n */
 int gets_n(char *s, int limit)	
@@ -39,6 +46,9 @@ int main()
   
     processPrint(binaryTree);
     printf("You have successfully inserted!\n");
+    
+    printf("Reading from EmployeeNames.txt ... \n");
+    readFile();
   
   return 0;
 }
